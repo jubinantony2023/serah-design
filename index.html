@@ -1,0 +1,474 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SERAH DESIGN</title>
+<style>
+:root{--accent:#a64f69;--gold:#c39a52;--ink:#38252c;--page:#fffaf9;--card:#fff;--soft:#fff0f4;--hero:#fce9ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:var(--page)}header{padding:22px 6%;background:var(--soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}.brand{font: bold 30px Georgia;color:var(--accent);letter-spacing:3px}.tag{font-size:11px;letter-spacing:2px;color:var(--gold);margin-top:6px}.logo{display:block;width:min(260px,65vw);height:auto;max-height:120px;object-fit:contain;margin:0 auto 4px}.brand-wrap{text-align:center}nav a{margin:8px;color:var(--ink);text-decoration:none}
+.theme{padding:16px;text-align:center;background:var(--soft)}.theme button,.filters button{padding:10px 13px;margin:4px;border:1px solid var(--gold);border-radius:22px;background:var(--card);color:var(--accent);cursor:pointer}
+.hero{text-align:center;padding:55px 15px;background:var(--hero)}h1,h2{font-family:Georgia;color:var(--accent);font-weight:normal}h1{font-size:clamp(34px,6vw,56px)}.btn,.order{display:inline-block;padding:12px 20px;border-radius:24px;background:var(--accent);color:white;text-decoration:none}section{padding:36px 6%}h2{text-align:center;font-size:32px}.filters{text-align:center}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:20px;max-width:1100px;margin:auto}.card{background:var(--card);border:1px solid #ead7dc;border-radius:14px;overflow:hidden}.card img{width:100%;height:260px;object-fit:cover}.info{padding:14px}.price{color:var(--accent);font-weight:bold}.small{font-size:13px;line-height:1.5}.order{display:block;text-align:center;background:#278b59;margin-top:12px;border-radius:8px}footer{text-align:center;padding:28px;background:var(--soft)}
+body[data-theme="lavender"]{--accent:#76549a;--gold:#a58ac4;--ink:#30263b;--page:#fbf8ff;--card:#fff;--soft:#f1eafb;--hero:#eee5fa}
+body[data-theme="cream"]{--accent:#87663b;--gold:#c39a52;--ink:#3e3428;--page:#fffaf0;--card:#fffdf8;--soft:#f8f0df;--hero:#f5ead4}
+body[data-theme="black"]{--accent:#e0bd78;--gold:#d6b56e;--ink:#f8f0e4;--page:#211d20;--card:#302a2e;--soft:#342b30;--hero:#282126}
+
+.admin-panel{max-width:900px;margin:24px auto;padding:20px;background:var(--soft);border:1px solid var(--gold);border-radius:16px}
+.admin-panel h2{margin-top:0}.admin-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.admin-form input,.admin-form select,.admin-form button{width:100%;padding:12px;border:1px solid #d8bdc5;border-radius:9px;font:inherit}
+.admin-form button{background:var(--accent);color:#fff;border:0;cursor:pointer}
+.admin-note{font-size:13px;line-height:1.5;margin-top:12px}
+.admin-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.admin-tools button{padding:10px 14px;border:1px solid var(--gold);border-radius:9px;background:var(--card);color:var(--accent);cursor:pointer}
+.admin-preview{width:100%;max-height:180px;object-fit:contain;display:none;margin-top:10px}
+body[data-page="customer"] .delete-product{display:none}
+.delete-product{background:#9e3346;color:white;border:0;border-radius:7px;padding:8px 10px;cursor:pointer;margin-top:8px}
+#ownerLogin{max-width:520px;margin:22px auto;padding:18px;border:1px solid var(--gold);border-radius:14px;background:var(--soft)}
+#ownerLogin input,#inviteAccept input{width:100%;padding:12px;margin:7px 0;border:1px solid #d8bdc5;border-radius:8px;font:inherit}
+#ownerLogin button,#inviteAccept button{padding:11px 16px;border:0;border-radius:8px;background:var(--accent);color:white;cursor:pointer}
+#ownerStatus{font-size:13px;line-height:1.5;margin-top:8px}
+#adminProductList button{padding:8px 12px;border:1px solid var(--gold);border-radius:8px;background:var(--card);color:var(--accent);cursor:pointer}
+#manage .admin-panel{display:none}
+#inviteAccept{display:none;max-width:520px;margin:24px auto;padding:20px;background:var(--soft);border:1px solid var(--gold);border-radius:14px}
+
+
+#ownerLoginButton{display:inline-block;padding:12px 24px;border-radius:24px;background:var(--accent);color:white;border:0;cursor:pointer;font:inherit}
+#ownerLogout{padding:9px 14px;border:1px solid var(--gold);border-radius:9px;background:var(--card);color:var(--accent);cursor:pointer}
+
+.card img{cursor:pointer}
+.card img:focus{outline:3px solid var(--gold);outline-offset:-3px}
+.product-modal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(25,15,20,.78);padding:18px;overflow:auto}
+.product-modal.open{display:flex;align-items:center;justify-content:center}
+.product-modal-box{position:relative;background:var(--card);color:var(--ink);width:min(560px,100%);max-height:94vh;overflow:auto;border-radius:16px;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,.28)}
+.product-modal-box img{display:block;width:100%;max-height:55vh;object-fit:contain;border-radius:10px;background:var(--soft)}
+.product-modal-box h2{text-align:left;margin:14px 0 8px}
+.product-modal-close{position:absolute;right:12px;top:12px;width:38px;height:38px;border:0;border-radius:50%;background:var(--accent);color:white;font-size:24px;cursor:pointer}
+.product-modal-price{font-size:22px;font-weight:bold;color:var(--accent);margin:10px 0}
+.product-modal-size{line-height:1.6;margin:8px 0}
+
+
+.product-gallery-main{width:100%;max-height:55vh;object-fit:contain;border-radius:10px;background:var(--soft)}
+.product-thumbs{display:flex;gap:9px;overflow-x:auto;padding:10px 2px 4px}
+.product-thumb{flex:0 0 76px;width:76px;height:88px;padding:3px;border:2px solid transparent;border-radius:9px;background:var(--soft);cursor:pointer}
+.product-thumb.active{border-color:var(--accent)}
+.product-thumb img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+
+/* Separate home, customer and owner views */
+body{min-height:100vh}
+body[data-page="home"] .theme,body[data-page="home"] .hero,body[data-page="home"] #shop,body[data-page="home"] #manage,body[data-page="home"] #about,body[data-page="home"] #contact,body[data-page="home"] footer{display:none}
+body[data-page="customer"] #home,body[data-page="admin"] #home{display:none}
+body[data-page="customer"] #manage,body[data-page="admin"] .theme,body[data-page="admin"] .hero,body[data-page="admin"] #shop,body[data-page="admin"] #about,body[data-page="admin"] #contact{display:none}
+body[data-page="customer"] #customerBack{display:block}
+body[data-page="home"] #customerBack,body[data-page="admin"] #customerBack{display:none}
+body[data-page="customer"] .theme,body[data-page="customer"] .hero,body[data-page="customer"] #shop,body[data-page="customer"] #about,body[data-page="customer"] #contact,body[data-page="customer"] footer{display:block}
+body[data-page="admin"] #manage,body[data-page="admin"] footer{display:block}
+#home{padding:30px 6% 48px;text-align:center;background:linear-gradient(145deg,#fff7f8,#f8e8ed)}
+.home-intro{max-width:760px;margin:0 auto 25px}.home-intro h1{font-size:clamp(36px,7vw,60px);margin:12px 0}.home-intro p{line-height:1.7}
+.home-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:900px;margin:24px auto 30px}
+.home-photos img{width:100%;height:clamp(150px,28vw,290px);object-fit:cover;border-radius:15px;box-shadow:0 5px 18px #5a26301c}
+.home-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px auto}.home-actions button,.back-home{border:0;padding:14px 24px;border-radius:28px;background:var(--accent);color:#fff;font-size:16px;cursor:pointer}
+.home-actions .secondary{background:#fff;color:var(--accent);border:1px solid var(--gold)}
+.page-back{padding:12px 6% 0}.page-back button{padding:9px 15px;border:1px solid var(--gold);border-radius:22px;background:var(--card);color:var(--accent);cursor:pointer}
+@media(max-width:520px){.home-photos{gap:7px}.home-photos img{height:155px}}
+
+/* SERAH DESIGN boutique-style home refresh */
+body[data-page="home"]{background:#fbf6f2;color:#34252a}
+body[data-page="home"] header{background:#fbf6f2;padding:22px 7%;border-bottom:1px solid #eadbd3;align-items:center}
+body[data-page="home"] .logo{width:min(245px,62vw);max-height:92px;margin:0 auto}
+body[data-page="home"] .brand-name{font-family:Georgia,'Times New Roman',serif;font-size:clamp(34px,5.2vw,58px);font-weight:700;letter-spacing:5px;line-height:1.12;margin:10px 0 7px;background:linear-gradient(100deg,#6f263f 5%,#b16a58 48%,#8a5424 90%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 3px 12px rgba(133,73,70,.10)}
+body[data-page="home"] .tag{color:#a47b58;letter-spacing:3px}
+#home{padding:0 7%;background:radial-gradient(circle at 78% 28%,#f6e7df 0,transparent 34%),linear-gradient(120deg,#fbf6f2 0%,#f8eee8 100%);overflow:hidden}
+.home-shell{max-width:1200px;min-height:590px;margin:auto;display:grid;grid-template-columns:1fr 1.04fr;align-items:center;gap:5%;padding:50px 0 38px}
+.home-intro{text-align:left;max-width:520px;margin:0}
+.home-kicker{display:inline-block;color:#a47b58;font-size:11px;font-weight:bold;letter-spacing:3px;margin-bottom:18px}
+.home-intro h1{font-family:Georgia,serif;color:#442d32;font-size:clamp(42px,5.6vw,72px);line-height:1.04;letter-spacing:-1.8px;margin:0 0 22px}
+.home-intro h1 em{color:#a85f70;font-weight:normal}
+.home-intro p{max-width:440px;color:#78666a;font-size:16px;line-height:1.9;margin:0 0 28px}
+.home-actions{justify-content:flex-start;gap:12px;margin:0 0 25px}
+.home-actions button{padding:15px 23px;border-radius:4px;background:#a85f70;color:white;font-size:14px;letter-spacing:.3px;box-shadow:0 8px 20px #8f4c5b24;transition:transform .2s,box-shadow .2s}
+.home-actions button:hover{transform:translateY(-2px);box-shadow:0 11px 24px #8f4c5b35}
+.home-actions button span{font-size:18px;margin-left:8px}
+.home-actions .secondary{background:transparent;color:#76535a;border:1px solid #c9a995;box-shadow:none}
+.home-trust{display:flex;gap:20px;flex-wrap:wrap;color:#92766d;font-size:11px;letter-spacing:.5px}
+.home-visual{height:480px;position:relative;max-width:570px;width:100%;margin:auto}
+.home-photo-main{position:absolute;right:4%;top:0;width:70%;height:100%;overflow:hidden;border-radius:48% 48% 4px 4px;box-shadow:0 20px 45px #5a30301c}
+.home-photo-main img,.home-photo-small img{width:100%;height:100%;object-fit:cover;display:block}
+.home-photo-small{position:absolute;left:0;bottom:28px;width:38%;height:48%;overflow:hidden;border:8px solid #fbf6f2;border-radius:48% 48% 4px 4px;box-shadow:0 12px 30px #5a303026}
+.home-stamp{position:absolute;right:0;bottom:22px;background:#fffaf5;color:#9a6b5b;border:1px solid #d8bda9;border-radius:50%;width:104px;height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:9px;letter-spacing:2px;line-height:1.7;transform:rotate(9deg);box-shadow:0 8px 20px #5a303018}
+.home-stamp b{font-family:Georgia,serif;font-size:14px;letter-spacing:1px}
+.home-bottom{max-width:1200px;margin:auto;border-top:1px solid #e7d8d0;padding:17px 0 22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#9b8177;font-size:10px;letter-spacing:2px}
+.home-bottom a{color:#a85f70;text-decoration:none;letter-spacing:.5px;font-size:12px}
+@media(max-width:760px){body[data-page="home"] header{padding:16px 5%}body[data-page="home"] .brand-name{font-size:clamp(30px,8vw,43px);letter-spacing:3px;margin:8px 0 5px}#home{padding:0 6%}.home-shell{grid-template-columns:1fr;gap:28px;padding:38px 0 25px;min-height:0}.home-intro{text-align:center;margin:auto}.home-kicker{font-size:10px;letter-spacing:2px}.home-intro h1{font-size:clamp(40px,11vw,58px)}.home-intro p{font-size:14px;margin-left:auto;margin-right:auto}.home-actions{justify-content:center}.home-actions button{padding:13px 17px;font-size:13px}.home-trust{justify-content:center;font-size:10px;gap:10px}.home-visual{height:330px;max-width:460px}.home-photo-main{width:69%;right:7%}.home-photo-small{width:38%;height:47%;bottom:18px}.home-stamp{width:82px;height:82px;font-size:8px;right:0;bottom:12px}.home-stamp b{font-size:11px}.home-bottom{justify-content:center;text-align:center;padding:15px 0 19px}}
+@media(max-width:380px){.home-actions{flex-direction:column;align-items:stretch}.home-actions button{width:100%}.home-visual{height:285px}}
+
+.social-links{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;padding:22px 14px 30px;background:var(--page)}
+.social-links a{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid var(--gold);border-radius:28px;background:var(--card);color:var(--accent);text-decoration:none;font-size:14px;font-weight:600;box-shadow:0 5px 18px rgba(70,35,45,.06);transition:transform .2s,box-shadow .2s}
+.social-links a:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(70,35,45,.12)}
+.social-links svg{width:19px;height:19px;display:block;fill:currentColor;flex:none}
+.social-heading{text-align:center;padding:8px 12px 0;color:var(--gold);font:12px Georgia,serif;letter-spacing:2px;background:var(--page)}
+
+</style>
+<script>
+/* Preserve Netlify's recovery token before the Identity widget initializes. */
+(function(){
+  try {
+    var hash = window.location.hash || '';
+    var match = hash.match(/(?:^|[#&])recovery_token=([^&]+)/);
+    if (match) {
+      window.__serahRecoveryToken = decodeURIComponent(match[1]);
+      window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+    }
+  } catch (e) {}
+})();
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2DRCNSBFCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2DRCNSBFCY');
+</script>
+</head><body data-theme="pink" data-page="home">
+<header><div class="brand-wrap"><img class="logo" src="serah_design_logo.png" alt="SERAH DESIGN logo"><div class="brand-name">SERAH DESIGN</div><div class="tag">MODEST FASHION • EVERYDAY ELEGANCE</div></div></header>
+<main id="home">
+  <div class="home-shell">
+    <div class="home-intro">
+      <span class="home-kicker">THE NEW COLLECTION · SERAH DESIGN</span>
+      <h1>Style that feels<br><em>beautifully you.</em></h1>
+      <p>Discover elegant everyday fashion, thoughtfully chosen for comfort, confidence and every special moment.</p>
+      <div class="home-actions">
+        <button type="button" onclick="showPage('customer')">Explore Collection <span aria-hidden="true">↗</span></button>
+        <button type="button" class="secondary" onclick="showPage('admin')">Admin Login</button>
+      </div>
+      <div class="home-trust"><span>✦ Carefully selected styles</span><span>✦ Easy WhatsApp ordering</span></div>
+    </div>
+    <div class="home-visual">
+      <div class="home-photo-main"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=90" alt="Fashion collection inspiration"></div>
+      <div class="home-photo-small"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=90" alt="Elegant outfit inspiration"></div>
+      <div class="home-stamp">EVERYDAY<br><b>ELEGANCE</b></div>
+    </div>
+  </div>
+  <div class="home-bottom"><span>YOUR LITTLE DESTINATION FOR STYLE</span><a href="https://wa.me/919633332292">WhatsApp · +91 96333 32292</a></div>
+
+<div class="social-heading">FOLLOW & CONNECT WITH US</div>
+<div class="social-links" aria-label="SERAH DESIGN social and contact links">
+  <a href="https://www.instagram.com/serah_designz?bqrl=Ym1memFwancwc2V1" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6zm5.7-3.1a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg>
+    Instagram
+  </a>
+  <a href="https://www.facebook.com/share/1FWk81msmb/" target="_blank" rel="noopener" aria-label="Facebook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.2H7.6V13h2.7v8h3.2z"/></svg>
+    Facebook
+  </a>
+  <a href="mailto:jubinantony2023@gmail.com" aria-label="Email">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm9 7.2L20.5 7h-17L12 12.2zm0 2.5L3 8.5V17h18V8.5l-9 6.2z"/></svg>
+    Email
+  </a>
+  <a href="https://wa.me/919633332292" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.8 9.8 0 0 0-8.4 14.9L2.3 22l5.2-1.3A9.9 9.9 0 1 0 12 2zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A7.8 7.8 0 1 1 12 19.8zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.3.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.4 0-.1-.5-1.3-.7-1.8-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2.9.4 1.2.4.5.2 1 .1 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+</main>
+<div class="page-back" id="customerBack"><button type="button" onclick="showPage('home')">← Back to Home</button></div>
+<div class="theme"><b>Change Website Background</b><br><button onclick="setTheme('pink')">Baby Pink 🌸</button><button onclick="setTheme('lavender')">Lavender 💜</button><button onclick="setTheme('cream')">Cream & Gold ✨</button><button onclick="setTheme('black')">Black & Gold 🖤</button><div class="small">Choose a colour. It will be saved on this device.</div></div>
+<div class="hero"><h1>Elegance in Every Thread</h1><p>Discover beautiful styles for every moment.<br>Fresh arrivals • Lovely designs • Quality you’ll love</p><a class="btn" href="#shop">Explore Collection</a></div>
+<section id="shop"><h2>Our Collection</h2><div class="filters"><button onclick="filter('All')">All</button><button onclick="filter('Abaya')">Abaya</button><button onclick="filter('Kurti & Tops')">Kurti & Tops</button><button onclick="filter('Nighty')">Nighty</button><button onclick="filter('Coordinate Sets')">Coordinate Sets</button><button onclick="filter('New Arrivals')">New Arrivals</button></div><div class="grid" id="products"></div></section>
+
+<section id="manage"><div class="page-back"><button type="button" onclick="showPage('home')">← Back to Home</button></div>
+<div id="passwordResetBox" class="admin-panel" style="display:none;max-width:520px">
+<h2>RESET OWNER PASSWORD</h2>
+<p style="text-align:center">Choose a new password for your SERAH DESIGN owner account.</p>
+<form id="passwordResetForm" class="admin-form" style="grid-template-columns:1fr">
+<input id="newOwnerPassword" type="password" autocomplete="new-password" minlength="8" placeholder="New password (at least 8 characters)" required>
+<input id="confirmOwnerPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Confirm new password" required>
+<button type="submit">Save New Password</button>
+</form>
+<p id="passwordResetStatus" class="admin-note" role="status" aria-live="polite"></p>
+</div>
+<div id="ownerLoginBox" class="admin-panel">
+<h2>OWNER LOGIN</h2>
+<p style="text-align:center">SERAH DESIGN management is for the owner only.</p>
+<div style="max-width:420px;margin:auto;text-align:center">
+<button type="button" id="ownerLoginButton" class="btn" style="border:0;cursor:pointer">Owner Login</button>
+<p id="ownerStatus" class="admin-note">Please sign in with your invited Netlify Identity email and password.</p>
+</div>
+</div>
+<div class="admin-panel" id="adminPanel" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+<h2 style="margin:0">ADD NEW DRESS</h2>
+<button type="button" id="ownerLogout" class="admin-tools">Logout</button>
+</div>
+<p style="text-align:center">Add your dress photo, name, category, price and size.</p>
+<form id="addProductForm" class="admin-form">
+<input id="dressName" type="text" placeholder="Dress name" required>
+<select id="dressCategory" required>
+<option value="">Choose category</option><option>Abaya</option><option>Kurti & Tops</option><option>Nighty</option><option>Coordinate Sets</option><option>New Arrivals</option>
+</select>
+<input id="dressPrice" type="text" placeholder="Price (e.g. ₹999)" required>
+<input id="dressSize" type="text" placeholder="Available sizes (e.g. M, L, XL)">
+<input id="dressPhoto" type="file" accept="image/*" multiple required>
+<p class="admin-note" style="grid-column:1/-1;margin:0">Select up to 3 photos of the same dress together. The first photo will be the main display photo.</p>
+<button type="submit">＋ Add Dress</button>
+</form>
+<div id="photoPreview" class="admin-preview" style="display:none;max-height:none;gap:8px;flex-wrap:wrap"></div>
+<h3 style="margin-top:24px;color:var(--accent)">PRODUCT PUBLISHING</h3>
+<div id="adminProductList" class="admin-note" aria-live="polite"></div>
+<div class="admin-tools">
+<button type="button" id="exportProducts">Download Product Backup</button>
+<button type="button" id="importProducts">Restore Product Backup</button>
+<input id="importFile" type="file" accept="application/json,.json" hidden>
+</div>
+<p class="admin-note"><b>Important:</b> Product changes are saved in this browser on this device only. Draft dresses stay hidden from the customer page on this device until you press Publish. This simple version does not sync changes to other phones or visitors; shared online publishing needs an online database.</p>
+</div>
+</section>
+<section id="about"><h2>Welcome to SERAH DESIGN</h2><p style="text-align:center">Your little destination for stylish and comfortable fashion.</p></section>
+<section id="contact"><h2>Order & Enquiries</h2><p style="text-align:center">WhatsApp: <a href="https://wa.me/919633332292">+91 96333 32292</a></p></section><footer>© SERAH DESIGN • Thank you for shopping with us ❤️</footer>
+
+<div id="productModal" class="product-modal" role="dialog" aria-modal="true" aria-labelledby="productModalName" onclick="if(event.target===this)closeProduct()">
+  <div class="product-modal-box">
+    <button type="button" class="product-modal-close" aria-label="Close" onclick="closeProduct()">&times;</button>
+    <img id="productModalImage" class="product-gallery-main" src="" alt="Selected dress">
+    <div id="productModalThumbs" class="product-thumbs" aria-label="More photos of this dress"></div>
+    <h2 id="productModalName"></h2>
+    <div id="productModalCategory" class="small"></div>
+    <div id="productModalPrice" class="product-modal-price"></div>
+    <p id="productModalSize" class="product-modal-size"></p>
+    <a id="productModalOrder" class="order" target="_blank" rel="noopener" href="#">Order on WhatsApp</a>
+  </div>
+</div>
+
+
+<script>
+function showPage(page){
+  document.body.dataset.page=page;
+  if(typeof show==='function')show();
+  window.scrollTo(0,0);
+}
+if(window.__serahRecoveryToken) document.body.dataset.page='admin';
+function setTheme(t){document.body.dataset.theme=t;try{localStorage.setItem('serahTheme',t)}catch(e){}}
+try{let t=localStorage.getItem('serahTheme');if(t)setTheme(t)}catch(e){}
+const defaultItems=[
+['Elegant Nida Abaya','Abaya','₹1,299','https://images.unsplash.com/photo-1585487000160-6ebcf75eea1a?auto=format&fit=crop&w=700&q=80','Please confirm size availability on WhatsApp','sample-1'],
+['Printed Everyday Kurti','Kurti & Tops','₹699','https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80','Please confirm size availability on WhatsApp','sample-2'],
+['Comfort Nighty','Nighty','₹599','https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=700&q=80','Please confirm size availability on WhatsApp','sample-3'],
+['Cotton Coordinate Set','Coordinate Sets','₹1,099','https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=700&q=80','Please confirm size availability on WhatsApp','sample-4'],
+['New Season Style','New Arrivals','₹899','https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80','Please confirm size availability on WhatsApp','sample-5']
+];
+let items=defaultItems.slice();
+try{const saved=localStorage.getItem('serahProducts');if(saved){const parsed=JSON.parse(saved);if(Array.isArray(parsed))items=parsed;}}catch(e){}
+function saveItems(){try{localStorage.setItem('serahProducts',JSON.stringify(items));}catch(e){alert('Storage is full. Please use smaller photos.');}}
+function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function show(c='All'){
+ const visibleItems=items.filter(x=>document.body.dataset.page!=='customer' || x[7]!=='draft');
+ const filtered=visibleItems.filter(x=>c==='All'||x[1]===c);
+ document.getElementById('products').innerHTML=filtered.map(x=>`<article class="card"><img src="${x[3]}" alt="${safeText(x[0])}" role="button" tabindex="0" aria-label="View details for ${safeText(x[0])}" onclick="openProduct('${String(x[5]||'').replace(/'/g,'')}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProduct('${String(x[5]||'').replace(/'/g,'')}')}"><div class="info"><b>${safeText(x[0])}</b><div class="small">${safeText(x[1])}</div><p class="price">${safeText(x[2])}</p><div class="small">${safeText(x[4]||'Please confirm size availability on WhatsApp')}</div><a class="order" target="_blank" rel="noopener" href="https://wa.me/919633332292?text=${encodeURIComponent('Hi, I am interested in '+x[0])}">Order on WhatsApp</a><button class="delete-product" onclick="deleteProduct('${String(x[5]||'').replace(/'/g,'')}')">Delete</button></div></article>`).join('') || '<p style="text-align:center">No published dresses yet.</p>';
+ renderAdminProducts();
+}
+
+function renderAdminProducts(){
+ const box=document.getElementById('adminProductList');
+ if(!box)return;
+ if(!items.length){box.innerHTML='<p>No dresses added yet.</p>';return;}
+ box.innerHTML=items.map(x=>{
+   const draft=x[7]==='draft';
+   const id=String(x[5]||'').replace(/[^a-zA-Z0-9_-]/g,'');
+   return `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid var(--gold)">
+     <span><b>${safeText(x[0])}</b> · ${safeText(x[2])}<br><small>${draft?'DRAFT — customers cannot see this':'PUBLISHED — visible on customer page'}</small></span>
+     <span style="display:flex;gap:7px;flex-wrap:wrap">
+       <button type="button" onclick="togglePublish('${id}')">${draft?'Publish':'Unpublish'}</button>
+       <button type="button" onclick="deleteProduct('${id}')">Delete</button>
+     </span></div>`;
+ }).join('');
+}
+
+function togglePublish(id){
+ const product=items.find(x=>String(x[5]||'')===String(id));
+ if(!product)return;
+ product[7]=product[7]==='draft'?'published':'draft';
+ saveItems();show();
+}
+
+function openProduct(id){
+ const product=items.find(x=>String(x[5]||'')===String(id));
+ if(!product)return;
+ const photos=[product[3],...(Array.isArray(product[6])?product[6]:[])].filter(Boolean);
+ const main=document.getElementById('productModalImage');
+ const thumbs=document.getElementById('productModalThumbs');
+ main.src=photos[0]||'';
+ main.alt=product[0]||'Dress';
+ thumbs.innerHTML='';
+ photos.forEach((src,index)=>{
+   const button=document.createElement('button');
+   button.type='button';
+   button.className='product-thumb'+(index===0?' active':'');
+   button.setAttribute('aria-label','View photo '+(index+1));
+   const image=document.createElement('img');
+   image.src=src; image.alt=(product[0]||'Dress')+' photo '+(index+1);
+   button.appendChild(image);
+   button.addEventListener('click',()=>{
+     main.src=src;
+     thumbs.querySelectorAll('.product-thumb').forEach((b,i)=>b.classList.toggle('active',i===index));
+   });
+   thumbs.appendChild(button);
+ });
+ thumbs.style.display=photos.length>1?'flex':'none';
+ document.getElementById('productModalName').textContent=product[0]||'Dress';
+ document.getElementById('productModalCategory').textContent=product[1]||'';
+ document.getElementById('productModalPrice').textContent=product[2]||'';
+ document.getElementById('productModalSize').textContent='Size: '+(product[4]||'Please confirm size availability on WhatsApp');
+ document.getElementById('productModalOrder').href='https://wa.me/919633332292?text='+encodeURIComponent('Hi, I am interested in '+(product[0]||'this dress'));
+ document.getElementById('productModal').classList.add('open');
+ document.body.style.overflow='hidden';
+}
+function closeProduct(){
+ document.getElementById('productModal').classList.remove('open');
+ document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(event){if(event.key==='Escape')closeProduct();});
+
+function filter(c){show(c)}
+function deleteProduct(id){if(!confirm('Delete this dress from this device?'))return;items=items.filter(x=>String(x[5])!==String(id));saveItems();show();}
+document.getElementById('dressPhoto').addEventListener('change',function(){
+ const files=Array.from(this.files||[]);
+ const p=document.getElementById('photoPreview');
+ p.innerHTML='';
+ if(!files.length){p.style.display='none';return;}
+ if(files.length>3){alert('Please select up to 3 photos for one dress.');this.value='';p.style.display='none';return;}
+ if(files.some(f=>!f.type.startsWith('image/'))){alert('Please choose image files only.');this.value='';p.style.display='none';return;}
+ if(files.reduce((sum,f)=>sum+f.size,0)>2500000){alert('Please choose photos with a combined size under 2.5 MB.');this.value='';p.style.display='none';return;}
+ p.style.display='flex';
+ files.forEach(file=>{
+   const reader=new FileReader();
+   reader.onload=()=>{const img=document.createElement('img');img.src=reader.result;img.alt='Selected dress preview';img.style.cssText='width:90px;height:110px;object-fit:cover;border-radius:8px';p.appendChild(img);};
+   reader.readAsDataURL(file);
+ });
+});
+document.getElementById('addProductForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const selected=Array.from(document.getElementById('dressPhoto').files||[]);
+ if(!selected.length)return;
+ if(selected.length>3){alert('Please select up to 3 photos for one dress.');return;}
+ if(selected.reduce((sum,f)=>sum+f.size,0)>2500000){alert('Please choose photos with a combined size under 2.5 MB.');return;}
+ Promise.all(selected.map(file=>new Promise((resolve,reject)=>{
+   const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);
+ }))).then(photos=>{
+   const id=String(Date.now())+Math.random().toString(16).slice(2,6);
+   items.unshift([document.getElementById('dressName').value.trim(),document.getElementById('dressCategory').value,document.getElementById('dressPrice').value.trim(),photos[0],document.getElementById('dressSize').value.trim()||'Please confirm size availability on WhatsApp',id,photos.slice(1),'draft']);
+   try{saveItems();show();this.reset();document.getElementById('photoPreview').style.display='none';document.getElementById('photoPreview').innerHTML='';alert('Dress saved as DRAFT. Use Publish in the product list when you are ready.');}
+   catch(error){alert('Could not save these photos. Please use smaller images and try again.');}
+ }).catch(()=>alert('Could not read one of the selected photos. Please try again.'));
+});
+document.getElementById('exportProducts').addEventListener('click',()=>{
+ const blob=new Blob([JSON.stringify(items,null,2)],{type:'application/json'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='serah-design-products-backup.json';a.click();URL.revokeObjectURL(a.href);
+});
+document.getElementById('importProducts').addEventListener('click',()=>document.getElementById('importFile').click());
+document.getElementById('importFile').addEventListener('change',function(){
+ const f=this.files&&this.files[0];if(!f)return;
+ const r=new FileReader();r.onload=()=>{try{const data=JSON.parse(r.result);if(!Array.isArray(data))throw new Error();items=data;saveItems();show();alert('Product backup restored!');}catch(e){alert('This backup file is not valid.');}};r.readAsText(f);this.value='';
+});
+show();
+</script>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+(function(){
+ const loginBox=document.getElementById('ownerLoginBox');
+ const adminPanel=document.getElementById('adminPanel');
+ const status=document.getElementById('ownerStatus');
+ const loginButton=document.getElementById('ownerLoginButton');
+ const logoutButton=document.getElementById('ownerLogout');
+ const resetBox=document.getElementById('passwordResetBox');
+ const resetForm=document.getElementById('passwordResetForm');
+ const resetStatus=document.getElementById('passwordResetStatus');
+ let recoveryAccessToken=null;
+
+ function showSignedOut(){
+   loginBox.style.display='block';
+   adminPanel.style.display='none';
+   status.textContent='Please sign in with your Netlify Identity email and password.';
+ }
+ function showSignedIn(user){
+   if(!user || resetBox.style.display==='block') return;
+   loginBox.style.display='none';
+   adminPanel.style.display='block';
+ }
+
+ async function processRecoveryToken(){
+   const token=window.__serahRecoveryToken;
+   if(!token) return;
+   loginBox.style.display='none';
+   adminPanel.style.display='none';
+   resetBox.style.display='block';
+   resetStatus.textContent='Verifying your password reset link…';
+   try {
+     const response=await fetch('/.netlify/identity/verify',{
+       method:'POST',
+       headers:{'Content-Type':'application/json'},
+       body:JSON.stringify({token:token,type:'recovery'})
+     });
+     const data=await response.json().catch(()=>({}));
+     if(!response.ok || !data.access_token){
+       throw new Error(data.msg || data.message || 'This reset link may have expired. Please request a new password reset email.');
+     }
+     recoveryAccessToken=data.access_token;
+     resetStatus.textContent='Link verified. Enter your new password below.';
+   } catch(error) {
+     resetForm.style.display='none';
+     resetStatus.textContent=error.message || 'Could not verify the reset link. Please request a new one.';
+   }
+ }
+
+ resetForm.addEventListener('submit',async function(event){
+   event.preventDefault();
+   const password=document.getElementById('newOwnerPassword').value;
+   const confirm=document.getElementById('confirmOwnerPassword').value;
+   if(password.length<8){resetStatus.textContent='Please use at least 8 characters.';return;}
+   if(password!==confirm){resetStatus.textContent='The passwords do not match.';return;}
+   if(!recoveryAccessToken){resetStatus.textContent='The reset link is not verified. Please request a new reset email.';return;}
+   resetStatus.textContent='Saving your new password…';
+   try {
+     const response=await fetch('/.netlify/identity/user',{
+       method:'PUT',
+       headers:{'Content-Type':'application/json','Authorization':'Bearer '+recoveryAccessToken},
+       body:JSON.stringify({password:password})
+     });
+     const data=await response.json().catch(()=>({}));
+     if(!response.ok) throw new Error(data.msg || data.message || 'Could not update the password. Please try again.');
+     recoveryAccessToken=null;
+     resetForm.reset();
+     resetForm.style.display='none';
+     resetStatus.textContent='Password updated successfully. You can now log in with your new password.';
+     loginBox.style.display='block';
+     status.textContent='Your password was updated. Please sign in with your new password.';
+   } catch(error) {
+     resetStatus.textContent=error.message || 'Password update failed. Please try again.';
+   }
+ });
+
+ if(!window.netlifyIdentity){
+   if(!window.__serahRecoveryToken){
+     status.textContent='Login service did not load. Please refresh the page and try again.';
+     loginButton.disabled=true;
+   }
+   processRecoveryToken();
+   return;
+ }
+ netlifyIdentity.on('init',function(user){
+   if(window.__serahRecoveryToken) return;
+   if(user) showSignedIn(user); else showSignedOut();
+ });
+ netlifyIdentity.on('login',function(user){
+   if(window.__serahRecoveryToken) return;
+   showSignedIn(user);
+   netlifyIdentity.close();
+ });
+ netlifyIdentity.on('logout',showSignedOut);
+ netlifyIdentity.on('error',function(error){
+   if(status) status.textContent=(error && error.message) ? error.message : 'Login failed. Please check your email and password.';
+ });
+ loginButton.addEventListener('click',function(){netlifyIdentity.open('login');});
+ logoutButton.addEventListener('click',function(){netlifyIdentity.logout();});
+ // Initialize after registering listeners; the widget guards against duplicate initialization.
+ netlifyIdentity.init();
+ processRecoveryToken();
+})();
+</script>
+</body></html>
