@@ -370,105 +370,41 @@ show();
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
 (function(){
- const loginBox=document.getElementById('ownerLoginBox');
- const adminPanel=document.getElementById('adminPanel');
- const status=document.getElementById('ownerStatus');
- const loginButton=document.getElementById('ownerLoginButton');
- const logoutButton=document.getElementById('ownerLogout');
- const resetBox=document.getElementById('passwordResetBox');
- const resetForm=document.getElementById('passwordResetForm');
- const resetStatus=document.getElementById('passwordResetStatus');
- let recoveryAccessToken=null;
+  const loginBox = document.getElementById('ownerLoginBox');
+  const adminPanel = document.getElementById('adminPanel');
+  const status = document.getElementById('ownerStatus');
+  const loginButton = document.getElementById('ownerLoginButton');
+  const logoutButton = document.getElementById('ownerLogout');
 
- function showSignedOut(){
-   loginBox.style.display='block';
-   adminPanel.style.display='none';
-   status.textContent='Please sign in with your Netlify Identity email and password.';
- }
- function showSignedIn(user){
-   if(!user || resetBox.style.display==='block') return;
-   loginBox.style.display='none';
-   adminPanel.style.display='block';
- }
+  
+  const OWNER_PIN = '8281';
 
- async function processRecoveryToken(){
-   const token=window.__serahRecoveryToken;
-   if(!token) return;
-   loginBox.style.display='none';
-   adminPanel.style.display='none';
-   resetBox.style.display='block';
-   resetStatus.textContent='Verifying your password reset link…';
-   try {
-     const response=await fetch('/.netlify/identity/verify',{
-       method:'POST',
-       headers:{'Content-Type':'application/json'},
-       body:JSON.stringify({token:token,type:'recovery'})
-     });
-     const data=await response.json().catch(()=>({}));
-     if(!response.ok || !data.access_token){
-       throw new Error(data.msg || data.message || 'This reset link may have expired. Please request a new password reset email.');
-     }
-     recoveryAccessToken=data.access_token;
-     resetStatus.textContent='Link verified. Enter your new password below.';
-   } catch(error) {
-     resetForm.style.display='none';
-     resetStatus.textContent=error.message || 'Could not verify the reset link. Please request a new one.';
-   }
- }
+  function showSignedOut(){
+    loginBox.style.display = 'block';
+    adminPanel.style.display = 'none';
+    status.textContent = 'Please enter your owner PIN to continue.';
+  }
 
- resetForm.addEventListener('submit',async function(event){
-   event.preventDefault();
-   const password=document.getElementById('newOwnerPassword').value;
-   const confirm=document.getElementById('confirmOwnerPassword').value;
-   if(password.length<8){resetStatus.textContent='Please use at least 8 characters.';return;}
-   if(password!==confirm){resetStatus.textContent='The passwords do not match.';return;}
-   if(!recoveryAccessToken){resetStatus.textContent='The reset link is not verified. Please request a new reset email.';return;}
-   resetStatus.textContent='Saving your new password…';
-   try {
-     const response=await fetch('/.netlify/identity/user',{
-       method:'PUT',
-       headers:{'Content-Type':'application/json','Authorization':'Bearer '+recoveryAccessToken},
-       body:JSON.stringify({password:password})
-     });
-     const data=await response.json().catch(()=>({}));
-     if(!response.ok) throw new Error(data.msg || data.message || 'Could not update the password. Please try again.');
-     recoveryAccessToken=null;
-     resetForm.reset();
-     resetForm.style.display='none';
-     resetStatus.textContent='Password updated successfully. You can now log in with your new password.';
-     loginBox.style.display='block';
-     status.textContent='Your password was updated. Please sign in with your new password.';
-   } catch(error) {
-     resetStatus.textContent=error.message || 'Password update failed. Please try again.';
-   }
- });
+  function showSignedIn(){
+    loginBox.style.display = 'none';
+    adminPanel.style.display = 'block';
+  }
 
- if(!window.netlifyIdentity){
-   if(!window.__serahRecoveryToken){
-     status.textContent='Login service did not load. Please refresh the page and try again.';
-     loginButton.disabled=true;
-   }
-   processRecoveryToken();
-   return;
- }
- netlifyIdentity.on('init',function(user){
-   if(window.__serahRecoveryToken) return;
-   if(user) showSignedIn(user); else showSignedOut();
- });
- netlifyIdentity.on('login',function(user){
-   if(window.__serahRecoveryToken) return;
-   showSignedIn(user);
-   netlifyIdentity.close();
- });
- netlifyIdentity.on('logout',showSignedOut);
- netlifyIdentity.on('error',function(error){
-   if(status) status.textContent=(error && error.message) ? error.message : 'Login failed. Please check your email and password.';
- });
- loginButton.addEventListener('click',function(){netlifyIdentity.open('login');});
- logoutButton.addEventListener('click',function(){netlifyIdentity.logout();});
- // Initialize after registering listeners; the widget guards against duplicate initialization.
- netlifyIdentity.init();
- processRecoveryToken();
+  loginButton.addEventListener('click', function(){
+    const enteredPin = prompt('8281');
+
+    if(enteredPin === OWNER_PIN && OWNER_PIN !== 'YOUR_PIN'){
+      showSignedIn();
+    } else {
+      status.textContent = 'Incorrect PIN. Please try again.';
+    }
+  });
+
+  logoutButton.addEventListener('click', function(){
+    showSignedOut();
+  });
+
+  showSignedOut();
 })();
 </script>
 </body></html>
