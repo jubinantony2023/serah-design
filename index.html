@@ -513,6 +513,41 @@ body[data-page="home"] .social-links a {
     margin: 20px auto;
   }
 }
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 15px 10px;
+  background: #fbf6f2;
+  border-bottom: 1px solid #eadbd3;
+}
+
+.main-nav a {
+  color: #80566a;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 14px;
+  border: 1px solid #d9b9c5;
+  border-radius: 22px;
+}
+
+.main-nav a:hover {
+  background: #80566a;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .main-nav {
+    gap: 6px;
+  }
+  .main-nav a {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
