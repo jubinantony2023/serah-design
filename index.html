@@ -257,6 +257,99 @@ body[data-page="home"] .home-bottom a {
     text-align: center;
   }
 }
+  /* PREMIUM SERAH DESIGN HOMEPAGE */
+body[data-page="home"] .premium-home {
+  background: linear-gradient(135deg,#fff8f5,#f4e2e8,#fffaf0);
+  border: 1px solid #ead3c0;
+  border-radius: 0 0 35px 35px;
+  padding: 65px 6%;
+}
+
+body[data-page="home"] .premium-title {
+  font-family: Georgia,serif;
+  font-size: clamp(55px,7vw,90px);
+  line-height: .95;
+  color: #5a1830;
+  letter-spacing: 5px;
+}
+
+body[data-page="home"] .premium-title em {
+  color: #b77b57;
+}
+
+body[data-page="home"] .gold-line {
+  width: 100px;
+  height: 3px;
+  background: #c39a52;
+  margin: 22px 0;
+}
+
+body[data-page="home"] .home-intro h2 {
+  font-family: Georgia,serif;
+  color: #81505c;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+
+body[data-page="home"] .premium-visual img {
+  border: 5px solid #fff;
+  box-shadow: 0 15px 35px #5a183033;
+}
+
+body[data-page="home"] .home-stamp {
+  background: #5a1830;
+  color: #f6dfb7;
+  border: 3px solid #c39a52;
+}
+
+body[data-page="home"] .home-actions button {
+  background: #5a1830;
+  color: white;
+  border-radius: 30px;
+  padding: 15px 23px;
+}
+
+body[data-page="home"] .home-actions button.secondary {
+  background: transparent;
+  color: #5a1830;
+  border: 1px solid #5a1830;
+}
+
+body[data-page="home"] .social-heading {
+  color: #80505b;
+  text-align: center;
+  font-family: Georgia,serif;
+  letter-spacing: 3px;
+  margin-top: 30px;
+}
+
+body[data-page="home"] .social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 20px;
+}
+
+body[data-page="home"] .social-links a {
+  color: #5a1830;
+  border: 1px solid #c39a52;
+  border-radius: 25px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+@media(max-width:760px) {
+  body[data-page="home"] .premium-home {
+    padding: 35px 5%;
+  }
+  body[data-page="home"] .premium-home .home-intro {
+    text-align: center;
+  }
+  body[data-page="home"] .gold-line {
+    margin: 20px auto;
+  }
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
@@ -282,31 +375,33 @@ body[data-page="home"] .home-bottom a {
 </head><body data-theme="pink" data-page="home">
 <header><div class="brand-wrap"><img class="logo" src="serah_design_final.png" alt="SERAH DESIGN logo"><div class="brand-name">SERAH DESIGN</div><div class="tag">MODEST FASHION • EVERYDAY ELEGANCE</div></div></header>
 <main id="home">
-<div class="home-shell">
+<<div class="home-shell premium-home">
   <div class="home-intro">
-    <span class="home-kicker">WELCOME TO SERAH DESIGN</span>
-    <h1>Elegance in<br><em>Every Moment.</em></h1>
-    <p>Discover beautiful fashion for every day. Explore our handpicked collection of elegant, comfortable and stylish outfits.</p>
+    <span class="home-kicker">WELCOME TO</span>
+    <h1 class="premium-title">SERAH<br><em>DESIGN</em></h1>
+    <div class="gold-line"></div>
+    <h2>MODEST FASHION<br>EVERYDAY ELEGANCE</h2>
+    <p>Discover timeless styles, beautiful outfits and elegant fashion selected just for you.</p>
 
     <div class="home-actions">
-      <button type="button" onclick="showPage('customer')">SHOP COLLECTION ↗</button>
+      <button type="button" onclick="showPage('customer')">EXPLORE COLLECTION ↗</button>
       <button type="button" class="secondary" onclick="showPage('admin')">Admin Login</button>
     </div>
-
     <div class="home-trust">
-      <span>✦ Elegant Styles</span>
-      <span>✦ Easy WhatsApp Ordering</span>
+      <span>✦ BEAUTY</span>
+      <span>✦ COMFORT</span>
+      <span>✦ ELEGANCE</span>
     </div>
   </div>
 
-  <div class="home-visual">
+  <div class="home-visual premium-visual">
     <div class="home-photo-main">
       <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=90" alt="Fashion collection">
     </div>
     <div class="home-photo-small">
       <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=90" alt="Elegant fashion">
     </div>
-    <div class="home-stamp">MADE FOR<br><b>YOUR STYLE</b></div>
+    <div class="home-stamp">STYLE<br><b>WITH GRACE</b></div>
   </div>
 </div>
 
@@ -314,24 +409,13 @@ body[data-page="home"] .home-bottom a {
   <span>YOUR LITTLE DESTINATION FOR STYLE</span>
   <a href="https://wa.me/919633332292">ORDER ON WHATSAPP · +91 96333 32292</a>
 </div>
+
 <div class="social-heading">FOLLOW & CONNECT WITH US</div>
-<div class="social-links" aria-label="SERAH DESIGN social and contact links">
-  <a href="https://www.instagram.com/serah_designz?bqrl=Ym1memFwancwc2V1" target="_blank" rel="noopener" aria-label="Instagram">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6zm5.7-3.1a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg>
-    Instagram
-  </a>
-  <a href="https://www.facebook.com/share/1FWk81msmb/" target="_blank" rel="noopener" aria-label="Facebook">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.2H7.6V13h2.7v8h3.2z"/></svg>
-    Facebook
-  </a>
-  <a href="mailto:jubinantony2023@gmail.com" aria-label="Email">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm9 7.2L20.5 7h-17L12 12.2zm0 2.5L3 8.5V17h18V8.5l-9 6.2z"/></svg>
-    Email
-  </a>
-  <a href="https://wa.me/919633332292" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.8 9.8 0 0 0-8.4 14.9L2.3 22l5.2-1.3A9.9 9.9 0 1 0 12 2zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A7.8 7.8 0 1 1 12 19.8zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.3.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.4 0-.1-.5-1.3-.7-1.8-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2.9.4 1.2.4.5.2 1 .1 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
-    WhatsApp
-  </a>
+<div class="social-links">
+  <a href="https://www.instagram.com/serah_designz?bqrl=Ym1memFwancwc2V1" target="_blank">Instagram</a>
+  <a href="https://www.facebook.com/share/1FWk81msmb/" target="_blank">Facebook</a>
+  <a href="mailto:jubinantony2023@gmail.com">Email</a>
+  <a href="https://wa.me/919633332292" target="_blank">WhatsApp</a>
 </div>
 
 </main>
