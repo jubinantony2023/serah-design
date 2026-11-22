@@ -58,7 +58,32 @@ body[data-page="customer"] .delete-product{display:none}
 
 /* Separate home, customer and owner views */
 body{min-height:100vh}
+  
 body[data-page="home"] .theme,body[data-page="home"] .hero,body[data-page="home"] #shop,body[data-page="home"] #manage,body[data-page="home"] #about{display:none}
+  /* SEPARATE CONTACT PAGE */
+body[data-page="contact"] #home,
+body[data-page="contact"] .theme,
+body[data-page="contact"] .hero,
+body[data-page="contact"] #shop,
+body[data-page="contact"] #about,
+body[data-page="contact"] #manage {
+  display: none !important;
+}
+
+body[data-page="contact"] #contact,
+body[data-page="contact"] footer {
+  display: block !important;
+}
+
+body[data-page="contact"] #contact {
+  min-height: 70vh;
+  padding: 45px 20px;
+  margin: 25px auto;
+  max-width: 800px;
+  background: linear-gradient(145deg,#fff0f5,#fffaf0);
+  border: 2px solid #d4af37;
+  border-radius: 25px;
+}
 body[data-page="customer"] #home,body[data-page="admin"] #home{display:none}
 body[data-page="customer"] #manage,body[data-page="customer"] #manage,body[data-page="admin"] .hero,body[data-page="admin"] #shop,body[data-page="admin"] #about,body[data-page="admin"] #contact{display:none}
 body[data-page="customer"] #customerBack{display:block}
