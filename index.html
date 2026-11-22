@@ -622,6 +622,61 @@ body[data-page="about"] #about {
   margin: 18px auto;
   text-shadow: 1px 2px 4px rgba(180, 130, 50, 0.2);
 }
+  /* SERAH DESIGN CONTACT */
+#contact {
+  padding: 55px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff5f5, #f8e8e8);
+  border-radius: 20px;
+  margin: 30px 12px;
+}
+
+#contact h2 {
+  color: #8b5264;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.contact-intro {
+  color: #765c63;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 420px;
+  margin: auto;
+}
+
+.contact-details a {
+  display: block;
+  padding: 17px;
+  background: white;
+  color: #875367;
+  text-decoration: none;
+  border: 1px solid #efd5dc;
+  border-radius: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(120,70,85,.08);
+}
+
+.contact-details a:hover {
+  background: #f8e3e9;
+}
+
+.contact-details span {
+  display: block;
+  margin-top: 7px;
+}
+
+.contact-thanks {
+  margin-top: 28px;
+  color: #956477;
+  font-style: italic;
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
@@ -718,18 +773,35 @@ body[data-page="about"] #about {
 </section>
  
 
-<section id="contact" class="info-section">
-  <h2>CONTACT US</h2>
-  <p>For orders and enquiries, contact us on WhatsApp.</p>
-  <a href="https://wa.me/919633332292" target="_blank">Chat on WhatsApp</a>
+
+<section id="contact" class="info-section premium-contact">
+  <h2>GET IN TOUCH</h2>
+  <p>We would love to hear from you! ❤️</p>
+  <p>For orders, enquiries and support, connect with Serah Designs.</p>
+
+  <div class="contact-cards">
+    <a href="https://wa.me/919633332292" target="_blank">
+      💬 <strong>WhatsApp</strong>
+      <span>Chat with us</span>
+    </a>
+
+    <a href="https://www.instagram.com/serah_designz/" target="_blank">
+      📸 <strong>Instagram</strong>
+      <span>Follow our collection</span>
+    </a>
+
+    <a href="https://www.facebook.com/share/1FWk81msmb/" target="_blank">
+      🌸 <strong>Facebook</strong>
+      <span>Visit our page</span>
+    </a>
+
+    <a href="mailto:jubinantony2023@gmail.com">
+      ✉️ <strong>Email</strong>
+      <span>Send us an enquiry</span>
+    </a>
+  </div>
 </section>
-<div class="social-heading">FOLLOW & CONNECT WITH US</div>
-<div class="social-links">
-  <a href="https://www.instagram.com/serah_designz?bqrl=Ym1memFwancwc2V1" target="_blank">Instagram</a>
-  <a href="https://www.facebook.com/share/1FWk81msmb/" target="_blank">Facebook</a>
-  <a href="mailto:jubinantony2023@gmail.com">Email</a>
-  <a href="https://wa.me/919633332292" target="_blank">WhatsApp</a>
-</div>
+
 
 </main>
    <section id="about" class="info-section">
@@ -819,20 +891,38 @@ body[data-page="about"] #about {
 </div>
 </section>
 
-<section id="contact"><h2>Order & Enquiries</h2><p style="text-align:center">WhatsApp: <a href="https://wa.me/919633332292">+91 96333 32292</a></p></section><footer>© SERAH DESIGN • Thank you for shopping with us ❤️</footer>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p class="contact-intro">
+    We'd love to hear from you! ❤️
+    Connect with SERAH DESIGN for orders and enquiries.
+  </p>
 
-<div id="productModal" class="product-modal" role="dialog" aria-modal="true" aria-labelledby="productModalName" onclick="if(event.target===this)closeProduct()">
-  <div class="product-modal-box">
-    <button type="button" class="product-modal-close" aria-label="Close" onclick="closeProduct()">&times;</button>
-    <img id="productModalImage" class="product-gallery-main" src="" alt="Selected dress">
-    <div id="productModalThumbs" class="product-thumbs" aria-label="More photos of this dress"></div>
-    <h2 id="productModalName"></h2>
-    <div id="productModalCategory" class="small"></div>
-    <div id="productModalPrice" class="product-modal-price"></div>
-    <p id="productModalSize" class="product-modal-size"></p>
-    <a id="productModalOrder" class="order" target="_blank" rel="noopener" href="#">Order on WhatsApp</a>
+  <div class="contact-details">
+    <a href="https://wa.me/919633332292" target="_blank">
+      💬 WhatsApp Order & Enquiries
+      <span>+91 96333 32292</span>
+    </a>
+
+    <a href="https://www.instagram.com/serah_design/" target="_blank">
+      📸 Follow us on Instagram
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank">
+      💗 Follow us on Facebook
+    </a>
+
+    <a href="mailto:">
+      ✉️ Email Us
+    </a>
   </div>
-</div>
+
+  <p class="contact-thanks">
+    Thank you for choosing SERAH DESIGN! 🌸
+  </p>
+</section>
+
+<footer>© SERAH DESIGN • Thank you for shopping with us ❤️</footer>
 
 
 <script>
