@@ -580,6 +580,19 @@ body[data-page="home"] .social-links a {
   body[data-page="home"] #home .info-section {
   display: block;
 }
+  body[data-page="about"] #home,
+body[data-page="about"] .theme,
+body[data-page="about"] .hero,
+body[data-page="about"] #shop,
+body[data-page="about"] #manage,
+body[data-page="about"] #contact,
+body[data-page="about"] footer {
+  display: none;
+}
+
+body[data-page="about"] #about {
+  display: block;
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
@@ -608,7 +621,7 @@ body[data-page="home"] .social-links a {
   <a href="#home">HOME</a>
   <a href="#" onclick="showPage('customer'); return false;">SHOP</a>
   <a href="#" onclick="showPage('customer'); filter('New Arrivals'); return false;">NEW ARRIVALS</a>
-  <a href="#about">ABOUT</a>
+ <a href="#" onclick="showPage('about'); return false;">ABOUT</a>
   <a href="#contact">CONTACT</a>
   <a href="https://wa.me/919633332292" target="_blank">WHATSAPP ORDER</a>
 </nav>
