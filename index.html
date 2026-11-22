@@ -770,9 +770,9 @@ body[data-page="home"] .social-links a {
 
 
 <script>
-function showPage(page){
+function showPage(page, category='All'){
   document.body.dataset.page=page;
-  if(typeof show==='function')show();
+  if(typeof show==='function') show(category);
   window.scrollTo(0,0);
 }
 if(window.__serahRecoveryToken) document.body.dataset.page='admin';
