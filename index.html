@@ -677,6 +677,19 @@ body[data-page="about"] #about {
   color: #956477;
   font-style: italic;
 }
+  body[data-page="contact"] #home,
+body[data-page="contact"] .theme,
+body[data-page="contact"] .hero,
+body[data-page="contact"] #shop,
+body[data-page="contact"] #about,
+body[data-page="contact"] #manage {
+  display:none;
+}
+
+body[data-page="contact"] #contact,
+body[data-page="contact"] footer {
+  display:block;
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
@@ -928,7 +941,13 @@ body[data-page="about"] #about {
 <script>
 function showPage(page, category='All'){
   document.body.dataset.page=page;
+
   if(typeof show==='function') show(category);
+
+  if(page === 'contact'){
+    document.body.dataset.page='contact';
+  }
+
   window.scrollTo(0,0);
 }
 if(window.__serahRecoveryToken) document.body.dataset.page='admin';
