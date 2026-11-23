@@ -1095,6 +1095,15 @@ function showPage(page, category='All'){
 
   window.scrollTo(0,0);
 }
+  function showPage(page, category='All'){
+  document.body.dataset.page=page;
+  if(typeof show==='function') show(category);
+  if(page === 'contact'){
+    document.body.dataset.page='contact';
+  }
+  window.scrollTo(0,0);
+}
+document.body.dataset.page='home';
 if(window.__serahRecoveryToken) document.body.dataset.page='admin';
 function setTheme(t){document.body.dataset.theme=t;try{localStorage.setItem('serahTheme',t)}catch(e){}}
 try{let t=localStorage.getItem('serahTheme');if(t)setTheme(t)}catch(e){}
