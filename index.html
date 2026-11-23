@@ -74,8 +74,9 @@ body[data-page="contact"] #contact,
 body[data-page="contact"] footer {
   display: block !important;
 }
+body:not([data-page="contact"]) #contact {
+  display: none !important;
 
-body[data-page="contact"] #contact {
   min-height: 70vh;
   padding: 45px 20px;
   margin: 25px auto;
