@@ -716,6 +716,10 @@ body[data-page="contact"] #contact,
 body[data-page="contact"] footer {
   display:block;
 }
+  /* FIX: Hide About page while shopping */
+body[data-page="customer"] #about {
+  display: none !important;
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
