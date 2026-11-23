@@ -908,6 +908,45 @@ body[data-page="home"] .main-nav a:hover {
   background: #a34f70 !important;
   color: white !important;
 }
+  .shop-by-category {
+  padding: 45px 5%;
+  text-align: center;
+  background: #fff8f5;
+}
+
+.category-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+.category-box {
+  background: white;
+  border: 1px solid #e8d3c5;
+  border-radius: 18px;
+  padding: 25px 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #5a183015;
+}
+
+.category-box span {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.category-box h3 {
+  color: #5a1830;
+  font-size: 15px;
+}
+
+@media(max-width:600px) {
+  .category-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
