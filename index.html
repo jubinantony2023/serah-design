@@ -1380,7 +1380,7 @@ document.getElementById('dressPhoto').addEventListener('change',function(){
  const p=document.getElementById('photoPreview');
  p.innerHTML='';
  if(!files.length){p.style.display='none';return;}
- if(files.length>3){alert('Please select up to 3 photos for one dress.');this.value='';p.style.display='none';return;}
+ if(files.length>6){alert('Please select up to 6 photos for one dress.');this.value='';p.style.display='none';return;}
  if(files.some(f=>!f.type.startsWith('image/'))){alert('Please choose image files only.');this.value='';p.style.display='none';return;}
  if(files.reduce((sum,f)=>sum+f.size,0)>2500000){alert('Please choose photos with a combined size under 2.5 MB.');this.value='';p.style.display='none';return;}
  p.style.display='flex';
