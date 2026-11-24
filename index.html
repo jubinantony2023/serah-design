@@ -1,7 +1,62 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SERAH DESIGN</title>
   
 
-  
+  #productModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,0.85);
+  overflow-y: auto;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+#productModal.open {
+  display: flex;
+}
+
+.product-modal-box {
+  background: white;
+  width: 100%;
+  max-width: 550px;
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+  position: relative;
+}
+
+#productModalImage {
+  width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+}
+
+#productModalThumbs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.product-thumb img {
+  width: 65px;
+  height: 75px;
+  object-fit: cover;
+}
+
+.product-thumb.active {
+  border: 3px solid #a64f69;
+}
+
+.modal-close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  font-size: 22px;
+}
   <style>
     /* CUSTOMER PAGE - SOFT PINK BACKGROUND */
 body[data-page="customer"] {
@@ -1170,6 +1225,18 @@ body[data-page="customer"] #shop h2 {
 <section id="shop"><h2>Our Collection</h2><div class="filters"><button onclick="filter('All')">All</button><button onclick="filter('Abaya')">Abaya</button><button onclick="filter('Kurti & Tops')">Kurti & Tops</button><button onclick="filter('Nighty')">Nighty</button><button onclick="filter('Coordinate Sets')">Coordinate Sets</button><button onclick="filter('New Arrivals')">New Arrivals</button></div><div class="grid" id="products"></div></section>
 
 <section id="manage"><div class="page-back"><button type="button" onclick="showPage('home')">← Back to Home</button></div>
+  <div id="productModal">
+  <div class="product-modal-box">
+    <button type="button" onclick="closeProduct()" class="modal-close">✕</button>
+    <h2 id="productModalName">Dress</h2>
+    <div id="productModalCategory"></div>
+    <img id="productModalImage" src="" alt="Dress photo">
+    <div id="productModalThumbs"></div>
+    <h3 id="productModalPrice"></h3>
+    <p id="productModalSize"></p>
+    <a id="productModalOrder" class="order" target="_blank">Order on WhatsApp</a>
+  </div>
+</div>
  <div class="theme">
 <b>Change Website Background</b><br>
 <button onclick="setTheme('pink')">Baby Pink 🌸</button>
