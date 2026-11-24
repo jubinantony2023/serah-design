@@ -1403,10 +1403,7 @@ function togglePublish(id){
 }
 
 function openProduct(id){
-  function closeProduct(){
-  document.getElementById('productModal').classList.remove('open');
-  document.body.style.overflow='';
-}
+  
  const product=items.find(x=>String(x[5]||'')===String(id));
  if(!product)return;
  const photos=[product[3],...(Array.isArray(product[6])?product[6]:[])].filter(Boolean);
@@ -1429,6 +1426,10 @@ function openProduct(id){
    });
    thumbs.appendChild(button);
  });
+  function closeProduct(){
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow='';
+}
  thumbs.style.display=photos.length>1?'flex':'none';
  document.getElementById('productModalName').textContent=product[0]||'Dress';
  document.getElementById('productModalCategory').textContent=product[1]||'';
