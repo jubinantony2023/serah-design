@@ -1403,6 +1403,10 @@ function togglePublish(id){
 }
 
 function openProduct(id){
+  function closeProduct(){
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow='';
+}
  const product=items.find(x=>String(x[5]||'')===String(id));
  if(!product)return;
  const photos=[product[3],...(Array.isArray(product[6])?product[6]:[])].filter(Boolean);
