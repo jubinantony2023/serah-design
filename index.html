@@ -1394,7 +1394,7 @@ document.getElementById('addProductForm').addEventListener('submit',function(e){
  e.preventDefault();
  const selected=Array.from(document.getElementById('dressPhoto').files||[]);
  if(!selected.length)return;
- if(selected.length>3){alert('Please select up to 3 photos for one dress.');return;}
+ if(selected.length>6){alert('Please select up to 6 photos for one dress.');return;}
  if(selected.reduce((sum,f)=>sum+f.size,0)>2500000){alert('Please choose photos with a combined size under 2.5 MB.');return;}
  Promise.all(selected.map(file=>new Promise((resolve,reject)=>{
    const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);
