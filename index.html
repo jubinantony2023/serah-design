@@ -1426,10 +1426,7 @@ function openProduct(id){
    });
    thumbs.appendChild(button);
  });
-  function closeProduct(){
-  document.getElementById('productModal').classList.remove('open');
-  document.body.style.overflow='';
-}
+  
  thumbs.style.display=photos.length>1?'flex':'none';
  document.getElementById('productModalName').textContent=product[0]||'Dress';
  document.getElementById('productModalCategory').textContent=product[1]||'';
@@ -1442,6 +1439,10 @@ function openProduct(id){
 function closeProduct(){
  document.getElementById('productModal').classList.remove('open');
  document.body.style.overflow='';
+}
+  function closeProduct(){
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(event){if(event.key==='Escape')closeProduct();});
 
