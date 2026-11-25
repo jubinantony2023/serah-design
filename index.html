@@ -1055,6 +1055,7 @@ body[data-page="customer"] #shop h2 {
 </head><body data-theme="pink" data-page="home">
 <header><div class="brand-wrap"><img class="logo" src="serah_design_final.png" alt="SERAH DESIGN logo"><div class="brand-name">SERAH DESIGN</div><div class="tag">MODEST FASHION • EVERYDAY ELEGANCE</div></div></header>
 <nav class="main-nav">
+
   <a href="#" onclick="showPage('home'); return false;">HOME</a>
   <a href="#" onclick="showPage('customer','All'); return false;">SHOP</a>
   <a href="#" onclick="showPage('customer','New Arrivals'); return false;">NEW ARRIVALS</a>
@@ -1062,16 +1063,21 @@ body[data-page="customer"] #shop h2 {
   <a href="#" onclick="showPage('contact'); return false;">CONTACT</a>
   <a href="https://wa.me/919633332292" target="_blank">WHATSAPP ORDER</a>
 </nav>
-  <main id="home">
-  <div class="home-shell premium-home">
-  <div class="home-intro">
-    <span class="home-kicker">WELCOME TO</span>
-    <h1 class="premium-title">SERAH<br><em>DESIGN</em></h1>
-    <div class="gold-line"></div>
-    <h2>MODEST FASHION<br>EVERYDAY ELEGANCE</h2>
-    <p>Discover timeless styles, beautiful outfits and elegant fashion selected just for you.</p>
+  <script>
+ function showPage(page, category='All'){
+  document.body.dataset.page=page;
 
+  if(typeof show==='function') show(category);
+
+  if(page === 'home'){
+    window.scrollTo({top:0, behavior:'smooth'});
+  } else {
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+ }
     <div class="home-actions">
+      
       <button type="button" onclick="showPage('customer')">EXPLORE COLLECTION ↗</button>
       <button type="button" class="secondary" onclick="showPage('admin')">Admin Login</button>
     </div>
