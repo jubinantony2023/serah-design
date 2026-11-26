@@ -236,6 +236,23 @@ body[data-page="admin"] #manage,body[data-page="admin"] footer{display:block}
   font-size:16px;
   color:#634b53;
 }
+    /* SERAH DESIGN CUSTOMER PAGE TEST */
+body[data-page="customer"] #home,
+body[data-page="customer"] #manage {
+  display: none !important;
+}
+
+body[data-page="customer"] #shop {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 70vh !important;
+}
+
+body[data-page="customer"] #products {
+  display: grid !important;
+  visibility: visible !important;
+}
 .home-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:900px;margin:24px auto 30px}
 .home-photos img{width:100%;height:clamp(150px,28vw,290px);object-fit:cover;border-radius:15px;box-shadow:0 5px 18px #5a26301c}
 .home-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px auto}.home-actions button,.back-home{border:0;padding:14px 24px;border-radius:28px;background:var(--accent);color:#fff;font-size:16px;cursor:pointer}
