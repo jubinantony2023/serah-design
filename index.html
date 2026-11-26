@@ -205,6 +205,17 @@ body[data-page="customer"] #manage,body[data-page="customer"] #manage,body[data-
 body[data-page="customer"] #customerBack{display:block}
 body[data-page="home"] #customerBack,body[data-page="admin"] #customerBack{display:none}
 body[data-page="customer"] .theme,body[data-page="customer"] .hero,body[data-page="customer"] #shop,body[data-page="customer"] #about,body[data-page="customer"] #contact,body[data-page="customer"] footer{display:block}
+    /* SERAH DESIGN SHOP VISIBILITY FIX */
+body[data-page="shop"] #shop,
+body[data-page="customer"] #shop {
+  display: block !important;
+  min-height: 70vh;
+}
+
+body[data-page="shop"] #products,
+body[data-page="customer"] #products {
+  display: grid !important;
+}
 body[data-page="admin"] #manage,body[data-page="admin"] footer{display:block}
 #home{padding:30px 6% 48px;text-align:center;background:linear-gradient(145deg,#fff7f8,#f8e8ed)}
 .home-intro{
