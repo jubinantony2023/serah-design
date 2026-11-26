@@ -1409,17 +1409,26 @@ body[data-page="customer"] #shop h2 {
 
 <script>
 function showPage(page, category='All'){
-  document.body.dataset.page=page;
 
-  if(typeof show==='function') show(category);
+  document.body.dataset.page = page;
 
-  if(page === 'contact'){
-    document.body.dataset.page='contact';
+  if(page === 'customer'){
+    if(typeof show === 'function'){
+      show(category);
+    }
   }
 
-  window.scrollTo(0,0);
+  if(page === 'contact'){
+    document.body.dataset.page = 'contact';
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
 }
-  
+</script>
 document.body.dataset.page='home';
 if(window.__serahRecoveryToken) document.body.dataset.page='admin';
 function setTheme(t){document.body.dataset.theme=t;try{localStorage.setItem('serahTheme',t)}catch(e){}}
