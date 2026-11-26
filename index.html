@@ -1239,6 +1239,25 @@ body[data-page="customer"] #shop h2 {
   <h2>OUR COLLECTION</h2>
   <div id="products" class="grid"></div>
 </section>
+    <!-- PRODUCT PHOTO GALLERY -->
+<div id="productModal" class="product-modal">
+  <div class="product-modal-box">
+    <button type="button" class="product-modal-close" onclick="closeProduct()">×</button>
+
+    <img id="productModalImage" class="product-gallery-main" src="" alt="Dress photo">
+
+    <div id="productModalThumbs" class="product-thumbs"></div>
+
+    <h2 id="productModalName"></h2>
+    <p id="productModalCategory"></p>
+    <p id="productModalPrice" class="product-modal-price"></p>
+    <p id="productModalSize" class="product-modal-size"></p>
+
+    <a id="productModalOrder" class="order" href="#" target="_blank">
+      Order on WhatsApp
+    </a>
+  </div>
+</div>
 <section id="contact" class="info-section premium-contact">
   <h2>GET IN TOUCH</h2>
   <p>We would love to hear from you! ❤️</p>
