@@ -1371,6 +1371,20 @@ body[data-page="customer"] .main-nav a[onclick*="showPage('about')"],
 body[data-page="customer"] .main-nav a[onclick*="showPage('contact')"] {
   display: none !important;
 }
+    * SERAH DESIGN - PREMIUM PRODUCT CARDS */
+body[data-page="customer"] #products > * {
+  background: #ffffff !important;
+  border-radius: 18px !important;
+  box-shadow: 0 5px 20px rgba(90, 24, 48, 0.10) !important;
+  overflow: hidden;
+  padding: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+body[data-page="customer"] #products > *:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(90, 24, 48, 0.16) !important;
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
