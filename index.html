@@ -1101,6 +1101,221 @@ body[data-page="customer"] #shop {
 body[data-page="customer"] #shop h2 {
   color: #5a1830;
 }
+    /* SERAH DESIGN - LUXURY HOME PAGE MAKEOVER */
+
+body[data-page="home"] #home {
+  background: #f8f2e9 !important;
+  color: #48202f !important;
+  padding: 45px 5% !important;
+}
+
+body[data-page="home"] #home .home-shell {
+  max-width: 1250px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 45px;
+}
+
+body[data-page="home"] #home .home-intro {
+  text-align: left;
+  padding: 35px 10px;
+}
+
+body[data-page="home"] #home .home-kicker {
+  color: #a77c42 !important;
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+body[data-page="home"] #home .home-intro h1 {
+  color: #572337 !important;
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 5vw, 65px);
+  line-height: 1.15;
+}
+
+body[data-page="home"] #home .home-intro h1 em {
+  color: #b28b55 !important;
+}
+
+body[data-page="home"] #home .home-intro p {
+  color: #725c5c !important;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+body[data-page="home"] #home .gold-line {
+  background: #b28b55 !important;
+  width: 85px;
+  height: 3px;
+  margin: 22px 0;
+}
+
+body[data-page="home"] #home .home-actions button {
+  background: #572337 !important;
+  color: #fff !important;
+  border: 1px solid #572337 !important;
+  border-radius: 30px;
+  padding: 15px 25px;
+  font-weight: 700;
+  transition: .3s;
+}
+
+body[data-page="home"] #home .home-actions button:hover {
+  background: #a77c42 !important;
+  border-color: #a77c42 !important;
+}
+
+body[data-page="home"] #home .home-actions button.secondary {
+  background: transparent !important;
+  color: #572337 !important;
+}
+
+body[data-page="home"] #home .home-trust {
+  color: #a77c42 !important;
+  letter-spacing: 2px;
+  margin-top: 30px;
+}
+
+body[data-page="home"] #home .home-photo-main img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 180px 180px 20px 20px;
+  box-shadow: 0 15px 40px #57233725;
+}
+
+body[data-page="home"] #home .home-photo-small img {
+  border: 5px solid #f8f2e9;
+  border-radius: 18px;
+}
+
+body[data-page="home"] #home .home-stamp {
+  background: #572337 !important;
+  color: #f8e8ce !important;
+  border: 2px solid #b28b55;
+  border-radius: 50%;
+}
+
+body[data-page="home"] #home .home-bottom {
+  max-width: 1250px;
+  margin: 35px auto;
+  padding: 22px;
+  background: #572337 !important;
+  color: #fff !important;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+body[data-page="home"] #home .home-bottom a {
+  color: #f3d8a9 !important;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+body[data-page="home"] #home .featured-collection,
+body[data-page="home"] #home .shop-by-category {
+  background: #fffaf4 !important;
+  color: #572337 !important;
+  padding: 55px 20px;
+  margin-top: 35px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+body[data-page="home"] #home .collection-heading span {
+  color: #a77c42 !important;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+body[data-page="home"] #home .collection-heading h2,
+body[data-page="home"] #home .shop-by-category h2 {
+  color: #572337 !important;
+  font-family: Georgia, serif;
+  font-size: 34px;
+}
+
+body[data-page="home"] #home .category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1100px;
+  margin: 30px auto 0;
+}
+
+body[data-page="home"] #home .category-card {
+  background: #f8f2e9 !important;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px #57233715;
+}
+
+body[data-page="home"] #home .category-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+body[data-page="home"] #home .category-card h3 {
+  color: #572337 !important;
+  padding: 10px;
+}
+
+body[data-page="home"] #home .category-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 1000px;
+  margin: 30px auto 0;
+}
+
+body[data-page="home"] #home .category-box {
+  background: #f8f2e9 !important;
+  border: 1px solid #d8bd91 !important;
+  border-radius: 15px;
+  padding: 25px 12px;
+  color: #572337 !important;
+  cursor: pointer;
+  transition: .3s;
+}
+
+body[data-page="home"] #home .category-box:hover {
+  background: #572337 !important;
+  color: #fff !important;
+  transform: translateY(-5px);
+}
+
+@media(max-width:700px) {
+  body[data-page="home"] #home .home-shell {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  body[data-page="home"] #home .home-intro {
+    padding: 15px 5px;
+  }
+
+  body[data-page="home"] #home .home-photo-main img {
+    height: 380px;
+  }
+
+  body[data-page="home"] #home .category-grid,
+  body[data-page="home"] #home .category-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  body[data-page="home"] #home .home-bottom {
+    text-align: center;
+    justify-content: center;
+  }
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
