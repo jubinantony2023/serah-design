@@ -1365,6 +1365,12 @@ body[data-page="customer"] #products {
 body[data-page="customer"] {
   background-color: #fff0f5 !important;
 }
+    /* CUSTOMER PAGE - HIDE UNNECESSARY MENU */
+body[data-page="customer"] .main-nav a[onclick*="showPage('home')"],
+body[data-page="customer"] .main-nav a[onclick*="showPage('about')"],
+body[data-page="customer"] .main-nav a[onclick*="showPage('contact')"] {
+  display: none !important;
+}
 </style>
 <script>
 /* Preserve Netlify's recovery token before the Identity widget initializes. */
