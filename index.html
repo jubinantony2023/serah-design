@@ -1324,6 +1324,7 @@ body[data-page="customer"] #shop h2 {
 <div class="hero"><h1>Elegance in Every Thread</h1><p>Discover beautiful styles for every moment.<br>Fresh arrivals • Lovely designs • Quality you’ll love</p><a class="btn" href="#shop">Explore Collection</a></div>
 
 </div>
+     <section id="manage">
 <div id="ownerLoginBox" class="admin-panel">
 <h2>OWNER LOGIN</h2>
 <p style="text-align:center">SERAH DESIGN management is for the owner only.</p>
@@ -1522,29 +1523,8 @@ function closeProduct(){
 }
   
 document.addEventListener('keydown',function(event){if(event.key==='Escape')closeProduct();});
-const loginBox = document.getElementById('ownerLoginBox');
-const adminPanel = document.getElementById('adminPanel');
-const status = document.getElementById('ownerStatus');
-const loginButton = document.getElementById('ownerLoginButton');
-const logoutButton = document.getElementById('ownerLogout');
 
-const OWNER_PIN = '8281';
-
-loginButton.addEventListener('click', function(){
-  const enteredPin = prompt('Enter Admin PIN');
-  if(enteredPin === OWNER_PIN){
-    loginBox.style.display = 'none';
-    adminPanel.style.display = 'block';
-    show();
-  } else if(enteredPin !== null){
-    status.textContent = 'Incorrect PIN. Please try again.';
-  }
-});
-
-logoutButton.addEventListener('click', function(){
-  loginBox.style.display = 'block';
-  adminPanel.style.display = 'none';
-});
+    
 function filter(c){show(c)}
 function deleteProduct(id){if(!confirm('Delete this dress from this device?'))return;items=items.filter(x=>String(x[5])!==String(id));saveItems();show();}
 document.getElementById('dressPhoto').addEventListener('change',function(){
